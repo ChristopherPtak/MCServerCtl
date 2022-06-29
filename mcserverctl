@@ -123,11 +123,12 @@ show_usage()
 {
   echo 'Usage: mcserverctl COMMAND'
   echo 'Commands:'
-  echo '  init  Download and run a minecraft server'
+  echo '  init          Prepare a minecraft server'
 }
 
 case "$1" in
-  init) shift; command_init $@;;
-  *)    show_usage;;
+  init)      shift; command_init $@;;
+  -h|--help) show_usage;;
+  *)         show_usage;;
 esac
 
