@@ -94,6 +94,16 @@ fail_with_error()
 command_init()
 {
   version="1.18.1"
+
+  while test $# -gt 0
+  do
+    case "$1" in
+      --version=*) version=$(echo "$1" | cut -d'=' -f2);;
+      *)           fail_with_error "Invalid option: $1";;
+    esac
+    shift
+  done
+
   download_link=$(get_download_link "$version")
 
   if test -z "$download_link"
